@@ -1,5 +1,29 @@
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= list.name %></li>
-  <% end %>
-</ul>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="./images/popcorn.jpg"/>
+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to "New list", new_list_path(@list) %></a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <ul>
+    <% @lists.each do |list| %>
+      <li><%= link_to list.name, list_path(list) %> <%= link_to "Supprimer la liste", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
+    <% end %>
+  </ul>
+
+
+</div>
