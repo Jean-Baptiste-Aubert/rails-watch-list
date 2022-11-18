@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="./images/popcorn.jpg"/>
+      <img src="popcorn.jpg"/>
 </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,9 +21,9 @@
 <div>
   <ul>
     <% @lists.each do |list| %>
-      <li><%= link_to list.name, list_path(list) %> <%= link_to "Supprimer la liste", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
+      <li>
+      <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= link_to list.name, list_path(list) %> <%= link_to "Supprimer la liste", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
     <% end %>
   </ul>
-
-
 </div>
