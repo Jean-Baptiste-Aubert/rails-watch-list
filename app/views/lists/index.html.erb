@@ -17,13 +17,18 @@
   </div>
 </div>
 
-
-<div>
-  <ul>
-    <% @lists.each do |list| %>
-      <li>
-      <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
-      <%= link_to list.name, list_path(list) %> <%= link_to "Supprimer la liste", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
-    <% end %>
-  </ul>
+<div class="list_title">
+<h2>My lists</h2>
+  <div class="cards">
+      <% @lists.each do |list| %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attached? ? cl_image_path(list.photo.key, height: 300, crop: :fill) : asset_path('cinema.jpg') %>')">
+          <span><%= link_to list.name, list_path(list) %></span>
+          <span class="button_delete">
+          <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-regular fa-circle-xmark"></i>
+          <% end %>
+          </span>
+          </div>
+      <% end %>
+  </div>
 </div>
